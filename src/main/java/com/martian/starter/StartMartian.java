@@ -7,7 +7,6 @@ import com.martian.cache.MartianConfigCache;
 import com.martian.config.MartianConfig;
 import com.martian.starter.load.LoadJDBC;
 import com.martian.starter.load.LoadServer;
-import com.martian.starter.load.LoadWeb;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -37,7 +36,6 @@ public class StartMartian {
             MartianConfigCache.saveConfig(martianConfig);
 
             loadJDBC();
-            loadWeb();
             loadServer();
         } catch (Exception e){
             logger.error("启动服务失败", e);
@@ -51,15 +49,6 @@ public class StartMartian {
     private static void loadServer() throws Exception {
         logger.info("开始加载Server模块");
         LoadServer.load();
-    }
-
-    /**
-     * 加载web
-     * @throws Exception
-     */
-    private static void loadWeb() throws Exception {
-        logger.info("开始加载Web模块");
-        LoadWeb.load();
     }
 
     /**
